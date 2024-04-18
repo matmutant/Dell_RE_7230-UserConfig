@@ -5,6 +5,12 @@ The following is my own Windows11 UserConfig on a Dell Rugged Extreme 7230
 
 ## Hardware:  
 ### Dell Rugged Extreme 7230
+
+![Visual of the tablet by DELL](https://github.com/matmutant/Dell_RE_7230-UserConfig/blob/main/src/DE_RE_7230-visual.jpg?raw=true)
+(visual from DELL website)
+
+Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell/tablette-latitude-7230-rugged-extreme/spd/latitude-12-7230-rugged-laptop/xctol723012emea_vp?redirectTo=SOC)
+
 #### Basic configuration
 - [x] CPU: Core [i7-1260U](https://ark.intel.com/content/www/fr/fr/ark/products/226455/intel-core-i7-1260u-processor-12m-cache-up-to-4-70-ghz.html)
 - [X] iGP:  Intel® Iris® Xe Graphics
