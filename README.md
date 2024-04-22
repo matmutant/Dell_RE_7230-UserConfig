@@ -53,6 +53,16 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 - [ ] Sling
 - [ ] Magnetic stand
 
+### Dimensions
+#### Size
+- Tablet (LxHxP) : 293x203x23.9mm
+- Tablet + kb : 
+#### Weight
+- Tablet, w/ 1 battery : 1.34kg
+- Tablet, w/ 2 batteries : 1.49kg
+- PC (tablet + kb), w/ 1 battery : 2.38kg
+- PC w/ 2 batteries : 2.53kg
+
 ## reviews and links
 - [Astringo](https://astringo-rugged.com/dell-rugged-extreme-7230-review-is-it-better-than-the-7220/) (most recent review to date)
 - [NotebookCheck](https://www.notebookcheck.net/Dell-Latitude-7230-Rugged-Extreme-tablet-review-One-of-the-best-displays-in-its-category.705311.0.html)
