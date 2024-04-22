@@ -14,8 +14,8 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 #### Basic configuration
 - [x] CPU: Core [i7-1260U](https://ark.intel.com/content/www/fr/fr/ark/products/226455/intel-core-i7-1260u-processor-12m-cache-up-to-4-70-ghz.html)
 - [X] iGP:  Intel® Iris® Xe Graphics
-- [x] RAM: 2x16GB LPDDR5, 5 200 MT/s (`wmic memorychip list full`)
-- [x] SSD: 1TB M.2 NVMe
+- [x] RAM: 2x16GB LPDDR5, 5 200 MT/s (`wmic memorychip list full` : 8x4GB LPDDR5 6400 modules)
+- [x] SSD: 1TB M.2 NVMe (PM9B1 NVMe Samsung 1024GB)
 - [X] Screen: 12" 1 200 cd/m² WVA FHD (1 920 x 1 200) 100 % sRVB
 - [X] Battery (primary) : 2 Cells 35.6Wh
 - [x] OS: Windows 11 Pro 22H2
