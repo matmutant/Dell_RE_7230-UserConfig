@@ -26,4 +26,8 @@ latest version is available [here](https://learn.microsoft.com/en-us/cpp/windows
 Once WinTab is installed, 3 new devices display in "edit > input devices" : 
 ![GIMP menu](https://github.com/matmutant/Dell_RE_7230-UserConfig/blob/main/PN720R/Wintab/Gimp_Input_Device.png)
 
-Once Visuall C++ is installed 
+Once Visuall C++ is installed, still nothing better on GIMP.
+
+## Krita
+As of 2024-04-25, pressure sensitivit works perfectly fine on Krita once "windows ink" mode is enabled (so not using WinTab).
+
