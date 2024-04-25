@@ -86,3 +86,9 @@ Misc software installed:
 - [ ] VirtualBox
 - [ ] [...]  
 - [ ] WSL2 (with ZSH used as main Shell)
+
+## Making the PN720R Active pen pressure sensitivity work
+[not properly working as of 2024-04-25]
+PN720R active pen works quite well on the 7230 (although depending on the language of the datasheet it written it is only compatible wth 7220, or with both...), but at first I thought that pressure sensitivity wasn't working at all.
+See [dedicated section](https://github.com/matmutant/Dell_RE_7230-UserConfig/blob/main/PN720R/README.md]
+
