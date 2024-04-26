@@ -6,7 +6,7 @@ The following is my own Windows11 UserConfig on a Dell Rugged Extreme 7230
 ## Hardware:  
 ### Dell Rugged Extreme 7230
 
-![Visual of the tablet by DELL](https://github.com/matmutant/Dell_RE_7230-UserConfig/blob/main/src/DE_RE_7230-visual.jpg?raw=true)
+![Visual of the tablet by DELL](./src/DE_RE_7230-visual.jpg?raw=true)
 (visual from DELL website)
 
 Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell/tablette-latitude-7230-rugged-extreme/spd/latitude-12-7230-rugged-laptop/xctol723012emea_vp?redirectTo=SOC)
@@ -87,8 +87,58 @@ Misc software installed:
 - [ ] [...]  
 - [ ] WSL2 (with ZSH used as main Shell)
 
+## [WSL2 & Zsh](./ZSH#readme)
+
 ## Making the PN720R Active pen pressure sensitivity work
-[not properly working as of 2024-04-25]
-PN720R active pen works quite well on the 7230 (although depending on the language of the datasheet it written it is only compatible wth 7220, or with both...), but at first I thought that pressure sensitivity wasn't working at all.
-See [dedicated section](https://github.com/matmutant/Dell_RE_7230-UserConfig/blob/main/PN720R/README.md]
+[not properly working for GIMP as of 2024-04-25]
+PN720R active pen works quite well on the 7230 (although depending on the language of the datasheet it written it is only compatible wth 7220, or with both...), but at first I thought that pressure sensitivity wasn't working at all.  
+In fact it works for the very few  apps that are "Windows Ink" ready, but not for whose that need WinTab  
+See [dedicated section](./PN720R/README.md)
+
+## Bring back hibernate mode
+With Windows11, microsoft added what they called InstantGO, a S0 sleep mode that allows the machine to wake up on notifications, quite like we have on smartphones: problem, x86 architecture is not as power efficient and Windows not as good on that subject. The result is (very) high power consumption when you think your device is sleeping !  
+
+Why would you give up on S1/S2/S3/S4 sleep levels ? S0 sleep can be usefull for short periode of time, but when your device is alone (in a bag, on your desk) for a while, it is better to put it in "real" sleep (= at least S3, or better : S4) 
+
+Thankfully, **although the option is not available in the UI anymore**, you can set auto-hibernate (in addition to manual hibernate on the menu/button press/lid closed.  
+
+A [good article](https://answers.microsoft.com/en-us/windows/forum/all/how-to-set-windows-11-to-hibernate-automatically/84231535-7f8f-49aa-9b26-fa8d25bb6fcc) explains how to do it.
+
+> In Windows 10, you can set the timeout so that after sleeping for a certain duration, the PC automatically hibernates to go to deep power saving.
+
+> Windows 11 seems to be missing the UI feature to set that time out and by default it's set to a very long time
+
+Below is what I did on my own machine :  
+First, enabling deep sleep with `powercfg /HIBERNATE ON`  
+Output of `powercfg /q`  
+
+```
+GUID du paramètre d’alimentation : 9d7815a6-7ee4-497e-8888-515a05f02364  (Mettre en veille prolongée après)
+      Alias de GUID : HIBERNATEIDLE
+      Valeur minimale possible : 0x00000000
+      Valeur maximale possible : 0xffffffff
+      Incrément possible des paramètres : 0x00000001
+      Unités possibles des paramètres : secondes
+    Index actuel du paramètre de courant alternatif : 0x00000000
+    Index actuel du paramètre de courant continu : 0x7fffffff
+```
+
+Note that this `0x7fffffff` value for auto hibernate on battery is so big it just can't go to deep sleep at all
+
+I simply set it to 10 minutes (the value might change in the future depending on experience) with `powercfg /x  hibernate-timeout-dc 10`
+
+`0x7fffffff` (=2147483647 seconds, ~24,8 days!!!) ==> `0x00000258` (= 600 seconds, 10 minutes)
+
+```
+GUID du paramètre d’alimentation : 9d7815a6-7ee4-497e-8888-515a05f02364  (Mettre en veille prolongée après)
+      Alias de GUID : HIBERNATEIDLE
+      Valeur minimale possible : 0x00000000
+      Valeur maximale possible : 0xffffffff
+      Incrément possible des paramètres : 0x00000001
+      Unités possibles des paramètres : secondes
+    Index actuel du paramètre de courant alternatif : 0x00000000
+    Index actuel du paramètre de courant continu : 0x00000258
+```
+
+Of course, when your device is in S4, then it will take a while to restart fully.
 
