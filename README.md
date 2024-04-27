@@ -67,7 +67,7 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 - [Astringo](https://astringo-rugged.com/dell-rugged-extreme-7230-review-is-it-better-than-the-7220/) (most recent review to date)
 - [NotebookCheck](https://www.notebookcheck.net/Dell-Latitude-7230-Rugged-Extreme-tablet-review-One-of-the-best-displays-in-its-category.705311.0.html)
 - [PCmag](https://www.pcmag.com/reviews/dell-latitude-7230-rugged-extreme-tablet)
-- [RuggedPCreview](https://www.ruggedpcreview.com/3_slates_dell_latitude_7230_rugged_extreme_tablet.html)
+- [RuggedPCreview](https://www.ruggedpcreview.com/3_slates_dell_latitude_7230_rugged_extreme_tablet.html) | [in depth review](https://www.ruggedpcreview.com/3_slates_dell_latitude_7230.html)
 - [StorageReview](https://www.storagereview.com/review/dell-latitude-7230-rugged-extreme-tablet-review)
 - [TechRadar](https://www.techradar.com/pro/dell-latitude-7230-rugged-extreme-review)
 
