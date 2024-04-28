@@ -1,9 +1,7 @@
 # Dell_RE_7230-UserConfig
 The following is my own Windows11 UserConfig on a Dell Rugged Extreme 7230
 
-
-
-## Hardware:  
+## Hardware
 ### Dell Rugged Extreme 7230
 
 ![Visual of the tablet by DELL](./src/DE_RE_7230-visual.jpg?raw=true)
@@ -14,7 +12,7 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 #### Basic configuration
 - [x] CPU: Core [i7-1260U](https://ark.intel.com/content/www/fr/fr/ark/products/226455/intel-core-i7-1260u-processor-12m-cache-up-to-4-70-ghz.html)
 - [X] iGP:  Intel® Iris® Xe Graphics
-- [x] RAM: 2x16GB LPDDR5, 5 200 MT/s (`wmic memorychip list full` : 8x4GB LPDDR5 6400 modules)
+- [x] RAM: 32GB in 2x16GB channels of LPDDR5, 5 200 MT/s (`wmic memorychip list full` : 8x4GB LPDDR5 6400 modules)
 - [x] SSD: 1TB M.2 NVMe (PM9B1 NVMe Samsung 1024GB)
 - [X] Screen: 12" 1 200 cd/m² WVA FHD (1 920 x 1 200) 100 % sRVB
 - [X] Battery (primary) : 2 Cells 35.6Wh
@@ -63,7 +61,7 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 - PC (tablet + kb), w/ 1 battery : 2.38kg
 - PC w/ 2 batteries : 2.53kg
 
-## reviews and links
+## Reviews and links
 - [Astringo](https://astringo-rugged.com/dell-rugged-extreme-7230-review-is-it-better-than-the-7220/) (most recent review to date)
 - [NotebookCheck](https://www.notebookcheck.net/Dell-Latitude-7230-Rugged-Extreme-tablet-review-One-of-the-best-displays-in-its-category.705311.0.html)
 - [PCmag](https://www.pcmag.com/reviews/dell-latitude-7230-rugged-extreme-tablet)
@@ -95,7 +93,8 @@ PN720R active pen works quite well on the 7230 (although depending on the langua
 In fact it works for the very few  apps that are "Windows Ink" ready, but not for whose that need WinTab  
 See [dedicated section](./PN720R/README.md)
 
-## Bring back hibernate mode
+## Bring back sleep - hibernate mode
+### Hibernate - S4
 With Windows11, microsoft added what they called InstantGO, a S0 sleep mode that allows the machine to wake up on notifications, quite like we have on smartphones: problem, x86 architecture is not as power efficient and Windows not as good on that subject. The result is (very) high power consumption when you think your device is sleeping !  
 
 Why would you give up on S1/S2/S3/S4 sleep levels ? S0 sleep can be usefull for short periode of time, but when your device is alone (in a bag, on your desk) for a while, it is better to put it in "real" sleep (= at least S3, or better : S4) 
@@ -141,4 +140,80 @@ GUID du paramètre d’alimentation : 9d7815a6-7ee4-497e-8888-515a05f02364  (Me
 ```
 
 Of course, when your device is in S4, then it will take a while to restart fully.
+
+### Bring back S3 sleep... and kick out that S0 stanby idle mode
+[not properly working for GIMP as of 2024-04-28]
+
+S0 sleep, aka "modern sleep" is eating battery like dog treats.  
+
+initial result of `powercfg /a`: 
+
+```
+Les états de veille suivants sont disponibles sur ce système :
+    Veille (Mode faible consommation S0) Connecté au réseau
+    Mettre en veille prolongée
+    Démarrage rapide
+
+Les états de veille suivants ne sont pas disponibles sur ce système :
+    En veille (S1)
+        Le microprogramme du système ne prend pas en charge cet état de mise en veille.
+        Cet état de veille est désactivé lorsque le mode faible consommation S0 est pris en charge.
+
+    En veille (S2)
+        Le microprogramme du système ne prend pas en charge cet état de mise en veille.
+        Cet état de veille est désactivé lorsque le mode faible consommation S0 est pris en charge.
+
+    En veille (S3)
+        Le microprogramme du système ne prend pas en charge cet état de mise en veille.
+        Cet état de veille est désactivé lorsque le mode faible consommation S0 est pris en charge.
+
+    Veille mode hybride
+        Le mode Veille (S3) n’est pas disponible.
+        L’hyperviseur ne prend pas en charge cet état de veille.
+```
+
+Reading many people having the same kind of issue, one solution is often proposed: modifying the registry.
+
+`\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power`
+1. Get back access to advanced power profiles (performance, normal, powersaving)  
+	`DWORD, name "CsEnabled" value 0`
+2. Get back S3 sleep mode
+	`DWORD, name "PlatformAoAcOverride" value 0`
+
+```
+reg add HKLM\System\CurrentControlSet\Control\Power /v PlatformAoAcOverride /t REG_DWORD /d 0
+```
+
+For me **it did NOT bring back S3, just disabled SO**:  
+
+```
+Les états de veille suivants sont disponibles sur ce système :
+    Mettre en veille prolongée
+    Démarrage rapide
+
+Les états de veille suivants ne sont pas disponibles sur ce système :
+    En veille (S1)
+        Le microprogramme du système ne prend pas en charge cet état de mise en veille.
+
+    En veille (S2)
+        Le microprogramme du système ne prend pas en charge cet état de mise en veille.
+
+    En veille (S3)
+        Le microprogramme du système ne prend pas en charge cet état de mise en veille.
+
+    Veille (mode faible consommation S0)
+        Le microprogramme du système ne prend pas en charge cet état de mise en veille.
+
+    Veille mode hybride
+        Le mode Veille (S3) n’est pas disponible.
+        L’hyperviseur ne prend pas en charge cet état de veille.
+```
+
+As it is worse having a device without sleep mode at all, revert:  
+```
+reg delete "HKLM\System\CurrentControlSet\Control\Power" /v PlatformAoAcOverride /f
+ 
+```
+
+
 
