@@ -1,5 +1,7 @@
 # Dell_RE_7230-UserConfig
 The following is my own Windows11 UserConfig on a Dell Rugged Extreme 7230
+> [!CAUTION]
+> The following shall be followed carefully as it is nothing but an end-user notepad listing things that worked (or didn't) at some point of time
 
 ## Hardware
 ### Dell Rugged Extreme 7230
@@ -85,10 +87,14 @@ Misc software installed:
 - [ ] [...]  
 - [ ] WSL2 (with ZSH used as main Shell)
 
-## [WSL2 & Zsh](./ZSH#readme)
+## WSL2 & Zsh
+> [!NOTE]
+> See [dedicated section](./ZSH#readme)
 
 ## Making the PN720R Active pen pressure sensitivity work
-[not properly working for GIMP as of 2024-04-25]
+> [!IMPORTANT]
+> not properly working for GIMP as of 2024-04-25  
+
 PN720R active pen works quite well on the 7230 (although depending on the language of the datasheet it written it is only compatible wth 7220, or with both...), but at first I thought that pressure sensitivity wasn't working at all.  
 In fact it works for the very few  apps that are "Windows Ink" ready, but not for whose that need WinTab  
 See [dedicated section](./PN720R/README.md)
@@ -142,7 +148,8 @@ GUID du paramètre d’alimentation : 9d7815a6-7ee4-497e-8888-515a05f02364  (Me
 Of course, when your device is in S4, then it will take a while to restart fully.
 
 ### Bring back S3 sleep... and kick out that S0 stanby idle mode
-[not properly working for GIMP as of 2024-04-28]
+> [!IMPORTANT]
+> not working at all as of 2024-05-02 : disabling S0 does not enable S3
 
 S0 sleep, aka "modern sleep" is eating battery like dog treats.  
 
@@ -215,5 +222,34 @@ reg delete "HKLM\System\CurrentControlSet\Control\Power" /v PlatformAoAcOverride
  
 ```
 
+### Switch from "Connected" S0 to "Disconnected" S0
+To try to limit power consumption of S0 (because I can't seem to get it disabled), switching from network enabled sleep to [network disabled sleep](https://www.elevenforum.com/t/enable-or-disable-network-connectivity-in-modern-standby-in-windows-11.3286/) :   
 
+`powercfg /setdcvalueindex scheme_current sub_none F15576E8-98B7-4186-B944-EAFA664402D9 0`  
+Or  
+`POWERCFG -SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 0`  
+
+`powercfg /a`confirms the switch worked :   
+```
+Les états de veille suivants sont disponibles sur ce système :
+    Veille (Mode faible consommation S0) Déconnecté du réseau
+    Mettre en veille prolongée
+    Démarrage rapide
+```  
+and   
+```  
+Veille (mode faible consommation S0) Connecté au réseau
+        La stratégie désactive la connectivité en mode veille.
+```  
+
+To revert :   
+(Enable)​  
+`powercfg /setdcvalueindex scheme_current sub_none F15576E8-98B7-4186-B944-EAFA664402D9 1​`  
+Or  
+`POWERCFG -SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 1​`  
+  
+(Managed by Windows - Default)​  
+`powercfg /setdcvalueindex scheme_current sub_none F15576E8-98B7-4186-B944-EAFA664402D9 2​`  
+Or​  
+`POWERCFG -SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 2​`  
 
