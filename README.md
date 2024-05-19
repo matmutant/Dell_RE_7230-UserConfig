@@ -99,8 +99,21 @@ PN720R active pen works quite well on the 7230 (although depending on the langua
 In fact it works for the very few  apps that are "Windows Ink" ready, but not for whose that need WinTab  
 See [dedicated section](./PN720R/README.md)
 
-## Bring back sleep - hibernate mode
-### Hibernate - S4
+## GPS
+### Configuring GPS
+Software for monitoring NMEA sentences :  
+- Putty
+- [VisualGPSView](https://www.visualgps.net/#visualgpsview-content)
+  
+#### NEO-M9N u-blox
+This NMEA interface can be read through the Prolific PL2303GS USB Serial COM Port adapter (COM3) at 38400 Baud rate
+
+#### Qualcomm® Snapdragon™ X20 Global Gigabit LTE (DW5821e)
+This NEMA interface can be read directly through DW5821e-eSIM Snapdragon X20 LTE NMEA (C0M6) at 9600 Baud rate
+
+## Power Saving : trying to increase battery life
+### Bring back sleep - hibernate mode
+#### Hibernate - S4
 With Windows11, microsoft added what they called InstantGO, a S0 sleep mode that allows the machine to wake up on notifications, quite like we have on smartphones: problem, x86 architecture is not as power efficient and Windows not as good on that subject. The result is (very) high power consumption when you think your device is sleeping !  
 
 Why would you give up on S1/S2/S3/S4 sleep levels ? S0 sleep can be usefull for short periode of time, but when your device is alone (in a bag, on your desk) for a while, it is better to put it in "real" sleep (= at least S3, or better : S4) 
@@ -147,7 +160,7 @@ GUID du paramètre d’alimentation : 9d7815a6-7ee4-497e-8888-515a05f02364  (Me
 
 Of course, when your device is in S4, then it will take a while to restart fully.
 
-### Bring back S3 sleep... and kick out that S0 stanby idle mode
+#### Bring back S3 sleep... and kick out that S0 stanby idle mode
 > [!IMPORTANT]
 > not working at all as of 2024-05-02 : disabling S0 does not enable S3
 
@@ -222,7 +235,7 @@ reg delete "HKLM\System\CurrentControlSet\Control\Power" /v PlatformAoAcOverride
  
 ```
 
-### Switch from "Connected" S0 to "Disconnected" S0
+#### Switch from "Connected" S0 to "Disconnected" S0
 To try to limit power consumption of S0 (because I can't seem to get it disabled), switching from network enabled sleep to [network disabled sleep](https://www.elevenforum.com/t/enable-or-disable-network-connectivity-in-modern-standby-in-windows-11.3286/) :   
 
 `powercfg /setdcvalueindex scheme_current sub_none F15576E8-98B7-4186-B944-EAFA664402D9 0`  
