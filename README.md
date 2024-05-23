@@ -3,6 +3,26 @@ The following is my own Windows11 UserConfig on a Dell Rugged Extreme 7230
 > [!CAUTION]
 > The following shall be followed carefully as it is nothing but an end-user notepad listing things that worked (or didn't) at some point of time
 
+## Why going rugged?
+Why choosing a rugged device instead of the plethora of devices available on the market when you are a "basic end-user"?  
+Sustainability begins by choosing long lasting devices instead of disposable ones that can be “recycled” : recycling is NOT the unharmful, it is only one of many way to minimize waste. I’d rather have devices that last (very) long than getting a new one every other year.  
+Let’s try to keep that in mind and Reduce, Reuse (and only then, Recycle)  
+My requirements that must be matched were the following :   
+- Powerful enough so it won’t get behind too quickly (my previous [main] device is 7 years old [2017-2024] Asus UX360 UAK with i7-7500U, 16GB of RAM and 512GB SATA SSD and a dying battery that is now reused by a family member)U
+- Upgradable and repairable : easy storage upgrade (preferably accessible without full disassembly) and with detailed instructions to change internals if needed
+- Tool less battery removal (even better : hot swappable), so multiple batteries can be used during device life and discarded when dead.
+- Tablet mode
+- Active stylus capability  
+
+Additional features that were welcomed :  
+- Customizability : VESA mount can be used as a platform to adapt external devices to the machine, many accessories are available to match multiple usecase.
+- Sturdiness, having a device that can withstand falls, dirt and water in real adverse situation should survive neatly a more delicate use.
+- Connectivity, with LAN, WLAN, Bluetooth, WWAN, GPS, most needs should be covered
+- RGB keyboard (a geek is a geek sorry.)
+- Privacy features (both cameras can be hidden)
+
+
+
 ## Hardware
 ### Dell Rugged Extreme 7230
 
@@ -64,7 +84,7 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 - PC w/ 2 batteries : 2.53kg
 
 ## Reviews and links
-- [Astringo](https://astringo-rugged.com/dell-rugged-extreme-7230-review-is-it-better-than-the-7220/) (most recent review to date)
+- [Astringo](https://astringo-rugged.com/dell-rugged-extreme-7230-review-is-it-better-than-the-7220/) (most recent review as of May 2024)
 - [NotebookCheck](https://www.notebookcheck.net/Dell-Latitude-7230-Rugged-Extreme-tablet-review-One-of-the-best-displays-in-its-category.705311.0.html)
 - [PCmag](https://www.pcmag.com/reviews/dell-latitude-7230-rugged-extreme-tablet)
 - [RuggedPCreview](https://www.ruggedpcreview.com/3_slates_dell_latitude_7230_rugged_extreme_tablet.html) | [in depth review](https://www.ruggedpcreview.com/3_slates_dell_latitude_7230.html)
@@ -204,7 +224,7 @@ Reading many people having the same kind of issue, one solution is often propose
 reg add HKLM\System\CurrentControlSet\Control\Power /v PlatformAoAcOverride /t REG_DWORD /d 0
 ```
 
-For me **it did NOT bring back S3, just disabled SO**:  
+For me **it did NOT bring back S3, just disabled S0**:  
 
 ```
 Les états de veille suivants sont disponibles sur ce système :
@@ -236,7 +256,7 @@ reg delete "HKLM\System\CurrentControlSet\Control\Power" /v PlatformAoAcOverride
 ```
 
 #### Switch from "Connected" S0 to "Disconnected" S0
-To try to limit power consumption of S0 (because I can't seem to get it disabled), switching from network enabled sleep to [network disabled sleep](https://www.elevenforum.com/t/enable-or-disable-network-connectivity-in-modern-standby-in-windows-11.3286/) :   
+To try to limit power consumption of S0 (because I can't seem to get it fully disabled), switching from network enabled sleep to [network disabled sleep](https://www.elevenforum.com/t/enable-or-disable-network-connectivity-in-modern-standby-in-windows-11.3286/) :   
 
 `powercfg /setdcvalueindex scheme_current sub_none F15576E8-98B7-4186-B944-EAFA664402D9 0`  
 Or  
