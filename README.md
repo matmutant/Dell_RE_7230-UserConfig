@@ -115,7 +115,7 @@ Misc software installed:
 > [!IMPORTANT]
 > not properly working for GIMP as of 2024-04-25  
 
-PN720R active pen works quite well on the 7230 (although depending on the language of the datasheet it written it is only compatible wth 7220, or with both...), but at first I thought that pressure sensitivity wasn't working at all.  
+PN720R active pen works quite well on the 7230 (although depending on the language of the official DELL datasheet it sad the pen is only compatible with 7220, or with both...), but at first I thought that pressure sensitivity wasn't working at all.  
 In fact it works for the very few  apps that are "Windows Ink" ready, but not for whose that need WinTab  
 See [dedicated section](./PN720R/README.md)
 
@@ -285,4 +285,17 @@ Or
 `powercfg /setdcvalueindex scheme_current sub_none F15576E8-98B7-4186-B944-EAFA664402D9 2​`  
 Or​  
 `POWERCFG -SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 2​`  
+
+#### Keyboard battery usage
+When KB is plugged, battery life is a lot worse than without as shown on the below graph (idle, screen brigthness at 21%, KB backlight is off, no USB/Ethernet peripheral plugged in)
+
+![Graph of battery discharge rate with or without keyboard](./BatteryDischargeRate/Graph_Battery_Discharge_Rate_KB.png?raw=true)
+
+This is around 3W difference between with KB (about 6 to 7W) and without (about 3W) **which is a 1:2 ratio !**
+
+2 hypothesis as of 2024-05-29 : 
+- The KB does use a lot of power (which is not unlikely, but I wouldn't expect that much with backlight off and no USB/Ethernet plugged in)
+- The power plan in Windows is a little different with and without KB leading to increase of power consumption when KB is plugged in _(this needs to be investigated further)_ and this is backed with the following :
+   - CPU power is also altered (not shown in graph) between 1.5 to 3W without KB to 2.5 to 4W whith the KB, both idling
+
 
