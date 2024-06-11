@@ -8,7 +8,7 @@ Why choosing a rugged device instead of the plethora of devices available on the
 Sustainability begins by choosing long lasting devices instead of disposable ones that can be “recycled” : recycling is NOT the unharmful, it is only one of many way to minimize waste. I’d rather have devices that last (very) long than getting a new one every other year.  
 Let’s try to keep that in mind and Reduce, Reuse (and only then, Recycle)  
 My requirements that must be matched were the following :   
-- Powerful enough so it won’t get behind too quickly (my previous [main] device is 7 years old [2017-2024] Asus UX360 UAK with i7-7500U, 16GB of RAM and 512GB SATA SSD and a dying battery that is now reused by a family member)U
+- Powerful enough so it won’t get behind too quickly (my previous [main] device is 7 years old [2017-2024] Asus UX360 UAK with i7-7500U, 16GB of RAM and 512GB SATA SSD and a dying battery that is now reused by a family member)
 - Upgradable and repairable : easy storage upgrade (preferably accessible without full disassembly) and with detailed instructions to change internals if needed
 - Tool less battery removal (even better : hot swappable), so multiple batteries can be used during device life and discarded when dead.
 - Tablet mode
