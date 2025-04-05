@@ -306,4 +306,21 @@ Set-SmbClientConfiguration -RequireSecuritySignature $false
 Set-SmbClientConfiguration -EnableInsecureGuestLogons $true
 ```
 
+## Programmable buttons ?  
+### Trying to find the event assiociated with buttons P1, P2, P3
+> [!NOTE]
+> 2025-04-05: not so promising  
 
+According to Skrommel's [ShowOff app](https://www.dcmembers.com/skrommel/download/showoff/) only volume up and down actually register as keyboard keystroke (nothing shows up with backlight up/down or P1, P2, or P3), not sure at this point if this is a limitation of the app or an actual 'non-keystroke'.
+Also tried the following method (see [here](https://stackoverflow.com/questions/25768509/read-individual-key-presses-in-powershell) for more details) :  
+```
+$KeyPress = [System.Console]::ReadKey()
+$K = $KeyPress.Key
+$K
+```
+
+which, when  I press volumeUp, outputs... :  
+```
+VolumeUp
+```
+But nothing with the programmable buttons, which is consistent with Skrommel's app results
