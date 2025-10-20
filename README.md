@@ -68,7 +68,7 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 ### Accessories
 - [X] Rugged Keyboard
 - [X] active pen PN720R
-- [ ] Handle (soft)
+- [X] Handle (soft)
 - [ ] Handle (hard)
 - [ ] Sling
 - [ ] Magnetic stand
@@ -93,19 +93,20 @@ Product page : [Here](https://www.dell.com/fr-fr/shop/ordinateurs-portables-dell
 
 ## Installed Software
 To get similar informations I had when using Conky on my GNU-Linux laptop, I installed the following:
-- [ ] [Rainmeter](https://www.rainmeter.net/) (see Rainmeter config part)
-- [ ] [Coretemp](https://www.alcpu.com/CoreTemp/)
+- [X] [Rainmeter](https://www.rainmeter.net/) (see Rainmeter config part)
+- [X] [Coretemp](https://www.alcpu.com/CoreTemp/)
 
 Misc software installed:
-- [ ] NotePad++ (with plugin installed like Compare and XML Tools)
+- [X] NotePad++ (with plugin installed like Compare and XML Tools)
 - [ ] [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)
-- [ ] 7-Zip
-- [ ] [Image Resizer](http://www.bricelam.net/ImageResizer/)
-- [ ] LibreOffice (x64)
-- [ ] Office 365
-- [ ] VirtualBox
+- [X] 7-Zip
+- [ ] ~~[Image Resizer](http://www.bricelam.net/ImageResizer/)~~ ==> replaced by MS PowerToys as intended by its creator
+- [X] [Microsoft PowerToys](https://github.com/microsoft/PowerToys/blob/main/README.md)
+- [X] LibreOffice (x64)
+- [X] Office 365
+- [X] VirtualBox
 - [ ] [...]  
-- [ ] WSL2 (with ZSH used as main Shell)
+- [X] WSL2 (with ZSH used as main Shell)
 
 ## WSL2 & Zsh
 > [!NOTE]
